@@ -15,6 +15,17 @@ var cons = require('consolidate')
   //  res.sendFile(path.join(__dirname+'/sprint2.html'));
 //});
 
+
+//app.use(express.static(__dirname + 'app'))
+app.use(express.static('appHold'))
+app.use('/app', express.static(__dirname + 'appHold/app'))
+
+
+app.get('/appHold', (req, res) => {
+    res.render(__dirname + 'app.html')
+})
+
+
 app.use(express.static('public'))
 app.use('/css', express.static(__dirname + 'public/css'))
 app.use('/js', express.static(__dirname + 'public/js'))
@@ -33,7 +44,7 @@ app.use('/sprint7', express.static(__dirname + 'views/sprint7'))
 
 
 //app.set('views', './views')   old
-
+//allows you to set html as view engine
 app.engine('html', cons.swig)
 app.set('views', path.join(__dirname, 'views'))
 app.set('view engine', 'html')
@@ -44,17 +55,6 @@ app.set('view engine', 'html')
 //end new
 
 //this might change
-
-
-//app.use(express.static(__dirname + 'app'))
-app.use(express.static('appHold'))
-app.use('/app', express.static(__dirname + 'appHold/app'))
-
-
-app.get('/appHold', (req, res) => {
-    res.render(__dirname + 'app.html')
-})
-
 
 
 
