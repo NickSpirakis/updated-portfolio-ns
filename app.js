@@ -10,10 +10,10 @@ var cons = require('consolidate')
 
 
 //new idea, router
-const router = express.Router()
-router.get('/views',function(req,res){
-    res.sendFile(path.join(__dirname+'/sprint2.html'));
-});
+//const router = express.Router()
+//router.get('/views',function(req,res){
+  //  res.sendFile(path.join(__dirname+'/sprint2.html'));
+//});
 
 app.use(express.static('public'))
 app.use('/css', express.static(__dirname + 'public/css'))
@@ -44,19 +44,21 @@ app.set('view engine', 'html')
 //end new
 
 //this might change
-app.use(express.static(__dirname + 'app'))
 
 
-app.get('', (req, res) => {
-    res.render(__dirname + '/app.html')
+//app.use(express.static(__dirname + 'app'))
+app.use(express.static('appHold'))
+app.use('/app', express.static(__dirname + 'appHold/app'))
+
+
+app.get('/appHold', (req, res) => {
+    res.render(__dirname + 'app.html')
 })
 
-//THIS is sprint 2 I dont think i need
-//router.get('/views', function(req, res) {
-  //  res.sendFile(path.join(__dirname + '/sprint2.html'))
-//})
 
-app.use('/', router)
+
+
+//app.use('/', router)
 app.listen(port, () => console.info('Listening on port 3000'))
 
 
