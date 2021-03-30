@@ -1,13 +1,11 @@
 //import
 const express = require('express')
 const app = express()
-const port = 3000
-
+const port = 8080 //normally 3000
 
 //new-path
 var path = require('path')
 var cons = require('consolidate')
-
 
 //new idea, router
 //const router = express.Router()
@@ -15,8 +13,8 @@ var cons = require('consolidate')
   //  res.sendFile(path.join(__dirname+'/sprint2.html'));
 //});
 
-
 //app.use(express.static(__dirname + 'app'))
+
 app.use(express.static('appHold'))
 app.use('/app', express.static(__dirname + 'appHold/app'))
 
@@ -32,8 +30,7 @@ app.use('/js', express.static(__dirname + 'public/js'))
 app.use('/img', express.static(__dirname + 'public/img'))
 
 
-
-//THIS IS THE WORKING ONE
+//THIS IS SET UP FOR VIEWS
 app.use(express.static('views'))
 app.use('/sprint2', express.static(__dirname + 'views/sprint2'))
 app.use('/sprint3', express.static(__dirname + 'views/sprint3'))
@@ -44,6 +41,7 @@ app.use('/sprint7', express.static(__dirname + 'views/sprint7'))
 
 
 //app.set('views', './views')   old
+
 //allows you to set html as view engine
 app.engine('html', cons.swig)
 app.set('views', path.join(__dirname, 'views'))
@@ -51,12 +49,6 @@ app.set('view engine', 'html')
 
 
 //app.engine('html', require('ejs').renderFile)   old
-
-//end new
-
-//this might change
-
-
 
 //app.use('/', router)
 app.listen(port, () => console.info('Listening on port 3000'))
