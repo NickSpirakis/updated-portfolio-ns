@@ -1,0 +1,19 @@
+li {
+    display: inline;
+}
+
+#sprint_list {
+    list-style-type: none;
+}
+
+#heading {
+    background-color: aquamarine;
+    margin: -20px;
+    padding: 25px;
+    font-size: 20px;
+}
+
+body{
+    padding: 0px;
+    margin: 0px;
+}
